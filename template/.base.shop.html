@@ -1,0 +1,13 @@
+{% extends .base.bank.html %}
+
+{% block title %}Shop{% end %}
+{% block stylesheet_url %}{{ static_url('style.shop.css') }}{% end %}
+
+{% block full_body %}
+ <div id="header">
+  <h1>Simple eBook shop</h1>
+ </div>
+ <div id="infobar">Just click on a book and buy!</div>
+ <div id="main">{% block main %}{% end %}</div>
+{% end %}
+

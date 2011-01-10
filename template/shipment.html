@@ -1,0 +1,14 @@
+{% extends ".base.shop.html" %}
+
+{% block main %}
+
+{% if valid %}
+<p>Your item will be shipped.</p>
+{% else %}
+<p>You did not buy the item.</p>
+<p>The item will not be shipped.</p>
+{% end %}
+
+<p><a href="/shop">Continue shopping</a></p>
+
+{% end %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head>
+ <title>{% block title %}Bank{% end %}</title>
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <link rel="shortcut icon" href="{{ static_url('favicon.ico') }}">
+ <link rel="stylesheet" href="{% block stylesheet_url %}{{ static_url('style.bank.css') }}{% end %}">
+ <link rel="apple-touch-icon-precomposed" href="{{ static_url('apple-touch-icon-57.png') }}">
+ <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static_url('apple-touch-icon-72.png') }}">
+ <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static_url('apple-touch-icon-114.png') }}">
+ <script>document.write('<link rel="apple-touch-startup-image" href="' + (navigator.platform=='iPad' ?
+   "{{ static_url('apple-touch-startup-image-ipad.png') }}" :
+   "{{ static_url('apple-touch-startup-image-ipod.png') }}"
+ ) + '">');
+ </script>
+</head><body>
+ {% block full_body %}
+  <img src="{{ static_url('bank-background.jpg') }}" alt="" id="background">
+  <a id="background_image_credit" href="http://www.flickr.com/photos/zolivier/3725935558/">Photo by Olivier</a>
+
+  <div id="body">
+
+   <div id="header">
+    <h1>Corp Bank</h1>
+    <h2>Powered by Finacle</h2>
+   </div>
+
+   {% if current_user %}
+   <div id="userbar">Hello <strong>{{ current_user }}</strong>. <a href="/logout">Not you?</a></div>
+   {% end %}
+
+   {% block main %}{% end %}
+  </div>
+ {% end %}
+</body>
+</html>

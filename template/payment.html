@@ -1,0 +1,36 @@
+{% extends ".base.bank.html" %}
+
+{% block main %}
+
+ {% set merchant = handler.get_argument('merchant', None) %}
+ {% set basket   = handler.get_argument('basket', None) %}
+ {% set amt      = handler.get_argument('amt', None) %}
+ {% set callback = handler.get_argument('callback', None) %}
+
+ <h1>Pay now?</h1>
+ {% if not merchant %}
+  <div id="error">No merchant specified</div>
+ {% elif not amt %}
+  <div id="error">No amount specified</div>
+ {% elif not callback %}
+  <div id="error">No callback URL specified</div>
+ {% else %}
+  <p>Payment request from: <strong class="merchant">{{ merchant }}</strong></p>
+  <table class="items">
+   <thead>
+    <tr><th>Item</th><th>Amount</th></tr>
+   </thead><tbody>
+    <tr><td class="desc">{{ basket }}</td><td>{{ amt }}</td></tr>
+   </tbody>
+  </table>
+
+  <form method="post" action="/pay">
+   <input type="hidden" name="merchant" value="{{ amt }}">
+   <input type="hidden" name="amt" value="{{ amt }}">
+   <input type="hidden" name="callback" value="{{ callback }}">
+   <input class="awesome yes" type="submit" name="pay" value="Pay now">
+   <input class="awesome no" type="submit" name="donotpay" value="No">
+  </form>
+ {% end %}
+
+{% end %}

@@ -1,0 +1,14 @@
+{% extends ".base.shop.html" %}
+
+{% block main %}
+
+<div id="books">
+{% for row in data[0:20] %}
+<a class="book" href="/pay?merchant=eBookseller&basket={{ url_escape(row[1]) }}&amt={{ row[2] }}&callback={{ url_escape('/ship') }}">
+ <img src="{{ row[0] }}">
+ <div class="price">{{ row[2] }}</div>
+</a>
+{% end %}
+</div>
+
+{% end %}

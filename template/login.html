@@ -1,0 +1,10 @@
+{% extends .base.bank.html %}
+
+{% block main %}
+<form class="login" method="post" action="">
+  <p><label>Email</label><input name="username" type="email"></p>
+  <p><label>Password</label><input name="password" type="password"></p>
+  <input name="next" type="hidden" value="{{ handler.get_argument('next', '/') }}">
+  <p><button class="awesome" type="submit">Submit</button></p>
+</form>
+{% end %}
